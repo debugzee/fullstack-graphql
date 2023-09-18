@@ -1,7 +1,37 @@
 {
   "user": {
     "id": "jBWMVGjm50l6LGwepDoty",
-    "username": "frontendmaster"
+    "username": "frontendmaster",
+    "pets": ["CgFCsb-cEMOa_Pa8xa5RO", "UFZw0oN1_APOGZL0Sbu0R", "Aq9PrxTjECdcLB8HMANj5", "YLGy9ublxm5w4N3tAWwpW"]
   },
-  "pet": []
+  "pet": [
+    {
+      "id": "CgFCsb-cEMOa_Pa8xa5RO",
+      "createdAt": 1694358192990,
+      "name": "Loki",
+      "type": "Dog",
+      "user": "jBWMVGjm50l6LGwepDoty"
+    },
+    {
+      "id": "UFZw0oN1_APOGZL0Sbu0R",
+      "createdAt": 1694358240145,
+      "name": "Bugs",
+      "type": "Bunny",
+      "user": "jBWMVGjm50l6LGwepDoty"
+    },
+    {
+      "id": "Aq9PrxTjECdcLB8HMANj5",
+      "createdAt": 1694358265875,
+      "name": "Nemo",
+      "type": "Fish",
+      "user": "jBWMVGjm50l6LGwepDoty"
+    },
+    {
+      "id": "YLGy9ublxm5w4N3tAWwpW",
+      "createdAt": 1694358282517,
+      "name": "Milo",
+      "type": "Cat",
+      "user": "jBWMVGjm50l6LGwepDoty"
+    }
+  ]
 }
