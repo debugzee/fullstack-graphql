@@ -5,15 +5,27 @@ import PetsList from "../components/PetsList";
 import NewPetModal from "../components/NewPetModal";
 import Loader from "../components/Loader";
 
+const PETS_FIELDS = gql`
+  fragment petsFields on Pet {
+    img
+    id
+    name
+    type
+    vaccinated @client
+    owner {
+      id
+      age @client
+    }
+  }
+`;
+
 const petQuery = gql`
   query fetchPets {
     pets {
-      img
-      id
-      name
-      type
+      ...petsFields
     }
   }
+  ${PETS_FIELDS}
 `;
 
 const petCreateMutation = gql`
@@ -43,16 +55,29 @@ export default function Pets() {
     }
   );
 
-  if (loading || createLoading) {
+  if (loading) {
     return <Loader />;
   }
   if (error || createError) {
     return <div>{error}</div>;
   }
 
+  console.log(data.pets[0]);
   const onSubmit = (input) => {
     setModal(false);
-    createPet({ variables: { input } });
+    createPet({
+      variables: { input },
+      optimisticResponse: {
+        __typename: "Mutation",
+        addPet: {
+          __typename: "Pet",
+          id: Math.round(Math.random() * -1000000) + "",
+          type: input.type,
+          name: input.name,
+          img: "https://via.placeholder.com/300",
+        },
+      },
+    });
   };
 
   if (modal) {
